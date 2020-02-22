@@ -1,34 +1,36 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 
-export default class List extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      albums: []
-    }
-  }
+function List() {
+  const [state, setState] = useState({
+    albums: []
+  })
 
-  componentDidMount() {
+  const getAlbumList = () =>
     fetch("https://jsonplaceholder.typicode.com/albums")
       .then(res => res.json())
-      .then(data => this.setState({ albums: data }))
-      .then(console.log("poop"))
+      .then(data => setState({ albums: data }))
+      .then(state => console.log(state))
       .catch(err => {
         console.log(err)
       })
-  }
 
-  render() {
-    const albumItems = this.state.albums.map(album => (
-      <li key={album.id}>
-        <p>{album.title}</p>
-      </li>
-    ))
-    return (
-      <div>
-        <h1>Albums</h1>
-        <ul>{albumItems}</ul>
-      </div>
-    )
-  }
+  useEffect(() => {
+    getAlbumList()
+    console.log("getAlbumList")
+  }, [])
+
+  const albumItems = state.albums.map(album => (
+    <li key={album.id}>
+      <p>{album.title}</p>
+    </li>
+  ))
+
+  return (
+    <div>
+      <h1>Albums</h1>
+      <ul>{albumItems}</ul>
+    </div>
+  )
 }
+
+export default List
