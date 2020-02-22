@@ -5,19 +5,17 @@ function List() {
     albums: []
   })
 
+  useEffect(() => {
+    getAlbumList()
+  }, [])
+
   const getAlbumList = () =>
     fetch("https://jsonplaceholder.typicode.com/albums")
       .then(res => res.json())
       .then(data => setState({ albums: data }))
-      .then(state => console.log(state))
       .catch(err => {
         console.log(err)
       })
-
-  useEffect(() => {
-    getAlbumList()
-    console.log("getAlbumList")
-  }, [])
 
   const albumItems = state.albums.map(album => (
     <li key={album.id}>
