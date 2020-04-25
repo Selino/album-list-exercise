@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 function List() {
   const [state, setState] = useState({
-    albums: []
+    albums: [],
   })
 
   useEffect(() => {
@@ -11,13 +11,13 @@ function List() {
 
   const getAlbumList = () =>
     fetch("https://jsonplaceholder.typicode.com/albums")
-      .then(res => res.json())
-      .then(data => setState({ albums: data }))
-      .catch(err => {
+      .then((res) => res.json())
+      .then((data) => setState({ albums: data.slice(0, 5) }))
+      .catch((err) => {
         console.log(err)
       })
 
-  const albumItems = state.albums.map(album => (
+  const albumItems = state.albums.map((album) => (
     <li key={album.id}>
       <p>{album.title}</p>
     </li>
