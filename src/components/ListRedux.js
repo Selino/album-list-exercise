@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { startAlbums } from "../actions/albumsAction"
 
-const NewList = () => {
+const ListRedux = () => {
   const albums = useSelector((state) => state.albums)
   const dispatch = useDispatch()
 
@@ -11,7 +11,9 @@ const NewList = () => {
     // eslint-disable-next-line
   }, [])
 
-  const displayAlbums = albums.map((item) => <li>{item.title}</li>)
+  const displayAlbums = albums.map((item) => (
+    <li key={item.id}>{item.title}</li>
+  ))
 
   return (
     <div>
@@ -21,4 +23,4 @@ const NewList = () => {
   )
 }
 
-export default NewList
+export default ListRedux
