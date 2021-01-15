@@ -38,7 +38,7 @@ export default function AsyncHooks() {
 
   return (
     <div>
-      <h1>Async React Hooks</h1>
+      <h1>Gif Loader</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault()

@@ -1,0 +1,19 @@
+{
+    "plugins": [
+        {
+            "name": "@zeplin/cli-connect-react-plugin"
+        }
+    ],
+    "projects": [
+        "5fff83845787032016fa9bf4"
+    ],
+    "styleguides": [
+        "5fff858cc520701d1a9fe86e"
+    ],
+    "components": [
+        {
+            "path": "src/components/Gif.js",
+            "zeplinNames": []
+        }
+    ]
+}
